@@ -61,8 +61,6 @@
 - `<rollingPolicy>`标签指定收集策略，比如基于时间进行收集
   - ` <fileNamePattern>`标签指定生成日志保存地址
 
-<hr>
-![](https://upload-images.jianshu.io/upload_images/9358011-fbb7ca357fdfdf43.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-<br>
-<br>
+
+
 
