@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringbootLogApplication {
     private static Logger logger = LoggerFactory.getLogger(SpringbootLogApplication.class);
 
+
     public static void main(String[] args) {
         SpringApplication.run(SpringbootLogApplication.class, args);
         logger.trace("trace level log input");
