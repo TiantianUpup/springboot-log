@@ -12,11 +12,6 @@ public class SpringbootLogApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringbootLogApplication.class, args);
-        logger.trace("trace level log input");
-        logger.debug("debug level log input");
-        logger.info("info level log input");
-        logger.warn("warn level log input");
-        logger.error("error level log input");
     }
 
 }
