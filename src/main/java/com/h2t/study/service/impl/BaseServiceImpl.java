@@ -116,7 +116,11 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl<M, 
      * @return
      * */
     public List<T> selectList(T obj) {
+        if (obj == null) {
+            logger.error("传参错误");
+        }
         Wrapper wrapper = new QueryWrapper<T>(obj);
+        logger.info("根据条件：{} 查询", obj);
         return this.list(wrapper);
     }
 

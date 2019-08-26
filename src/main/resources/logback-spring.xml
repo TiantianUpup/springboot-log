@@ -3,10 +3,10 @@
     <property resource="logback.properties"/>
     <appender name="CONSOLE-LOG" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>[%d{yyyy-MM-dd' 'HH:mm:ss.sss}] [%C] [%t] [%L] [%-5p] %m%n</pattern>
+            <pattern>%d [%t] %-5p [%c] - %m%n</pattern>
         </layout>
     </appender>
-    <!--获取比info级别高(包括info级别)但除error级别的日志-->
+    <!--收集除error级别以外的日志-->
     <appender name="INFO-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>ERROR</level>
@@ -14,7 +14,7 @@
             <onMismatch>ACCEPT</onMismatch>
         </filter>
         <encoder>
-            <pattern>[%d{yyyy-MM-dd' 'HH:mm:ss.sss}] [%C] [%t] [%L] [%-5p] %m%n</pattern>
+            <pattern>%d [%t] %-5p [%c] - %m%n</pattern>
         </encoder>
 
         <!--滚动策略-->
@@ -29,7 +29,7 @@
             <level>ERROR</level>
         </filter>
         <encoder>
-            <pattern>[%d{yyyy-MM-dd' 'HH:mm:ss.sss}] [%C] [%t] [%L] [%-5p] %m%n</pattern>
+            <pattern>%d [%t] %-5p [%c] - %m%n</pattern>
         </encoder>
         <!--滚动策略-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
