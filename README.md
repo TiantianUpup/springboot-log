@@ -20,7 +20,7 @@ git clone https://github.com/TiantianUpup/springboot-log.git
 ```
 - 数据准备  
 执行sql文件夹下的test.sql，执行之前先创建test数据库 
-- 修改LOG_ERROR_HOME、LOG_ERROR_HOME为你的本地日志保存地址
+- 修改LOG_ERROR_HOME、LOG_INFO_HOME为你的本地日志保存地址
 - 启动springboot-log4j2(端口号为8082)/springboot-logback(端口号为8080)
 - 访问/api/test  GET
 将看到不同级别的日志输出
