@@ -8,60 +8,46 @@
         <version>2.1.7.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.h2t.study</groupId>
     <artifactId>springboot-log</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot-log</name>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+    <modules>
+        <module>springboot-log4j2</module>
+        <module>springboot-logback</module>
+    </modules>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+    <dependencyManagement>
+        <dependencies>
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-starter-test</artifactId>-->
+                <!--<version>2.0.4.RELEASE</version>-->
+                <!--<scope>test</scope>-->
+            <!--</dependency>-->
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.1.3.RELEASE</version>
-        </dependency>
-        <!--mysql-->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>6.0.6</version>
-        </dependency>
+            <!--&lt;!&ndash;mysql&ndash;&gt;-->
+            <!--<dependency>-->
+                <!--<groupId>mysql</groupId>-->
+                <!--<artifactId>mysql-connector-java</artifactId>-->
+                <!--<version>6.0.6</version>-->
+            <!--</dependency>-->
 
-        <!--mybatisplus-->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.1.2</version>
-        </dependency>
-
-        <!--new relic-->
-        <!--<dependency>-->
-            <!--<groupId>com.newrelic.agent.java</groupId>-->
-            <!--<artifactId>newrelic-api</artifactId>-->
-            <!--<version>5.3.0</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>com.newrelic.agent.java</groupId>-->
-            <!--<artifactId>newrelic-agent</artifactId>-->
-            <!--<version>5.3.0</version>-->
-        <!--</dependency>-->
-    </dependencies>
+            <!--&lt;!&ndash;mybatisplus&ndash;&gt;-->
+            <!--<dependency>-->
+                <!--<groupId>com.baomidou</groupId>-->
+                <!--<artifactId>mybatis-plus-boot-starter</artifactId>-->
+                <!--<version>3.1.2</version>-->
+            <!--</dependency>-->
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <finalName>${project.artifactId}</finalName>
