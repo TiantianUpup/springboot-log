@@ -9,7 +9,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.h2t.study.service.BaseService;
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 import java.util.List;
@@ -26,9 +27,9 @@ import java.util.List;
  */
 //@Log4j2
 public class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl<M, T> implements BaseService<T> {
-    //Logger log = LoggerFactory.getLogger(BaseServiceImpl.class);
+    Logger log = LoggerFactory.getLogger(BaseServiceImpl.class);
 
-    Logger log = LogManager.getLogger(BaseServiceImpl.class);
+    //Logger log = LogManager.getLogger(BaseServiceImpl.class);
     public boolean insert(T obj) {
         return this.save(obj);
     }
