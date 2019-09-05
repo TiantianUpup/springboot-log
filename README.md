@@ -3,10 +3,8 @@
 该项目是springboot整合日志框架的demo工程，整合的日志框架包括log4j2、logback
 
 #### 模块说明
-- springboot-log4j2  
-springboot整合log4j2日志框架
-- sprongboot-logback  
-springboot整合logback日志框架
+- springboot-log4j2 => springboot整合log4j2日志框架
+- sprongboot-logback => springboot整合logback日志框架
 
 #### 开发环境
 - windows10 os
