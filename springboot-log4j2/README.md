@@ -21,6 +21,7 @@
     <artifactId>spring-boot-starter-log4j2</artifactId>
      <version>2.1.1.RELEASE</version>
 </dependency>
+
 <!--log4j2异步配置-->
 <dependency>
    <groupId>com.lmax</groupId>
@@ -87,5 +88,11 @@
 
 
 </Configuration>
-
 ```
+
+- 添加log4j2.component.properties配置文件【必须】
+配置文件中添加如下内容
+```
+Log4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+```
+
