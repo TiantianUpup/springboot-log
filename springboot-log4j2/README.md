@@ -1,14 +1,34 @@
-### 配置文件log4j2-spring.xml
-#### 异步配置方式
+### log4j2异步配置
+#### 异步配置步骤
 - 添加依赖
 ```
- <dependency>
-    <groupId>com.lmax</groupId>
-    <artifactId>disruptor</artifactId>
-    <version>3.4.2</version>
- </dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+    <!-- 去掉springboot默认配置 -->
+    <exclusions>
+        <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </exclusion>
+    </exclusions>
+    <version>2.1.3.RELEASE</version>
+</dependency>
+
+<!-- log4j2 -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-log4j2</artifactId>
+     <version>2.1.1.RELEASE</version>
+</dependency>
+<!--log4j2异步配置-->
+<dependency>
+   <groupId>com.lmax</groupId>
+   <artifactId>disruptor</artifactId>
+   <version>3.4.2</version>
+</dependency>
 ```
-- log4j2.xml配置
+- log4j2-spring.xml配置
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 
