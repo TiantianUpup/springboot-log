@@ -1,5 +1,14 @@
 ### 配置文件log4j2-spring.xml
 #### 异步配置方式
+- 添加依赖
+```
+ <dependency>
+    <groupId>com.lmax</groupId>
+    <artifactId>disruptor</artifactId>
+    <version>3.4.2</version>
+ </dependency>
+```
+- log4j2.xml配置
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 
