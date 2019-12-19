@@ -90,7 +90,7 @@
 </Configuration>
 ```
 
-- 添加log4j2.component.properties配置文件【必须】
+- 添加log4j2.component.properties配置文件【必须】  
 配置文件中添加如下内容
 ```
 Log4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
