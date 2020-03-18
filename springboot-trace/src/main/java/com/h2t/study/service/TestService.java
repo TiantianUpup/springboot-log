@@ -1,7 +1,7 @@
 package com.h2t.study.service;
 
 /**
- * TODO Description
+ * 业务类接口
  *
  * @author hetiantian
  * @version 1.0

@@ -1,13 +1,12 @@
 package com.h2t.study.controller;
 
-import org.apache.logging.log4j.LogManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * TODO Description
+ * 控制层
  *
  * @author hetiantian
  * @version 1.0

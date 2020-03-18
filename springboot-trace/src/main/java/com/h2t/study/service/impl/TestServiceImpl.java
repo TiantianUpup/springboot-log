@@ -1,7 +1,7 @@
 package com.h2t.study.service.impl;
 
-import com.h2t.study.ThreadPoolExecutorMdcWrapper;
 import com.h2t.study.service.TestService;
+import com.h2t.study.wrapper.ThreadPoolExecutorMdcWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 
 /**
- * TODO Description
+ * 业务类接口实现类
  *
  * @author hetiantian
  * @version 1.0
