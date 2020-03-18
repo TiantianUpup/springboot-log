@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出-->
+<!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数-->
+<configuration status="WARN" monitorInterval="1800">
+    <!--预先定义通用pattern-->
+    <properties>
+        <!--输出日志的格式-->
+        <!--<property name="pattern">[%d{yyyy-MM-dd HH:mm:ss:SSS}{GMT+8}][%5p][%20c][- %l - %m] %n</property>-->
+        <!--<PatternLayout pattern=" %d{yyyy/MM/dd HH:mm:ss} [%p] %c{1} (%F:%L) %msg%n" />-->
+        <property name="pattern">[TRACEID:%X{traceId}] %d{HH:mm:ss.SSS} %-5level %class{-1}.%M()/%L - %msg%xEx%n
+        </property>
+        <!--<property name="pattern">%d{HH:mm:ss.SSS} %-5level %class{36}.%M()/%L  - %msg%xEx%n</property>-->
+        <property name="filePath">./logs</property>
+        <!--<property name="filePath">C:\Users\Administrator\Desktop\log</property>-->
+    </properties>
+    <!--先定义所有的appender-->
+    <appenders>
+        <!--这个输出控制台的配置-->
+        <console name="Console" target="SYSTEM_OUT">
+            <!--输出日志的格式-->
+            <PatternLayout pattern="${pattern}"/>
+        </console>
+        <!-- 每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
+        <!-- filePattern：rollover时原文件所属的文件夹目录和文件名规则-->
+        <RollingFile name="RollingFileInfo" fileName="${filePath}/info.log"
+                     filePattern="${filePath}/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
+            <!-- 过滤日志：过滤器都有两个属性onMatch和onMismatch，指定匹配过滤器和不匹配过滤器时候执行的操作，有三个取值ACCEPT，DENY，NEUTRAL-->
+            <!-- 该过滤器只将info级别输入到文件-->
+            <Filters>
+                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${pattern}"/>
+            <Policies>
+                <!--当日期不匹配的时候执行rollover。例如上面定义的filePattern是${log_path}\logs/app-%d{yyyy-MM-dd}-%i.log.zip，
+                日期格式包含年月日，那么就会每天执行一次rollover。它有两个可定义的属性，一个是interval，表示rollover的间隔，
+                单位是日期的最小单位。比如如果日期是%d{yyyy-MM-dd-HH}，那么interval="6"意思就是每隔六个小时。另一个属性是modulate，
+                指定是否调整rollover的间隔。假如现在是上午3点，间隔是4个小时，当modulate为false的时候下次rollover就是上午七点，
+                以此类推，如果modulate是true下次rollover就是上午4点，然后以此类推。-->
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <!-- 日志文件到达指定大小是执行rollover，单位可以使KB、MB、GB。-->
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了10 -->
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+        <RollingFile name="RollingFileWarn" fileName="${filePath}/warn.log"
+                     filePattern="${filePath}/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">
+            <!-- 该过滤器只将warn级别输入到文件-->
+            <Filters>
+                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+        <RollingFile name="RollingFileError" fileName="${filePath}/error.log"
+                     filePattern="${filePath}/$${date:yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log">
+            <!-- 该过滤器只将error级别输入到文件-->
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </appenders>
+    <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
+    <loggers>
+        <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
+        <!--additivity是 子Logger 是否继承 父Logger 的 输出源（appender） 的标志位。
+        具体说，默认情况下子Logger会继承父Logger的appender，也就是说子Logger会在父Logger的appender里输出。
+        若是additivity设为false，则子Logger只会在自己的appender里输出，而不会在父Logger的appender里输出。-->
+        <logger name="org.springframework" level="INFO" additivity="false"/>
+        <logger name="org.mybatis" level="INFO" additivity="false"/>
+        <root level="info">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="RollingFileInfo"/>
+            <appender-ref ref="RollingFileWarn"/>
+            <appender-ref ref="RollingFileError"/>
+        </root>
+    </loggers>
+</configuration>

@@ -22,6 +22,7 @@
     <modules>
         <module>springboot-log4j2</module>
         <module>springboot-logback</module>
+        <module>springboot-trace</module>
     </modules>
 
     <dependencyManagement>

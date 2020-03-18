@@ -5,6 +5,7 @@
 #### 模块说明
 - springboot-log4j2 => springboot整合log4j2日志框架
 - sprongboot-logback => springboot整合logback日志框架
+- springboot-trace => springboot整合log4j2结合MDC实现全链路traceId
 
 #### 开发环境
 - windows10 os
@@ -30,3 +31,6 @@ RequestBody:
     }
     ```
     将看到info级别的日志输出
+    
+#### 更新说明
+- 2020/3/18 => 添加springboot-trace模块，log4j2结合MDC实现全链路traceId
