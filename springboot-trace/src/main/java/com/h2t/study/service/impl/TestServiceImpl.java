@@ -1,13 +1,12 @@
 package com.h2t.study.service.impl;
 
 import com.h2t.study.service.TestService;
+import com.h2t.study.util.OkHttpUtil;
 import com.h2t.study.wrapper.ThreadPoolExecutorMdcWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 
@@ -24,31 +23,16 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public void test() {
-        LOGGER.info("TestServiceImpl invoke");
-        System.out.println("hello");
-
-        ExecutorService es = Executors.newCachedThreadPool();
         ThreadPoolExecutorMdcWrapper threadPoolExecutorMdcWrapper = new ThreadPoolExecutorMdcWrapper(0, Integer.MAX_VALUE,
                 60L, TimeUnit.SECONDS,
-                new SynchronousQueue<Runnable>());
+                new SynchronousQueue<>());
         threadPoolExecutorMdcWrapper.execute(new Runnable() {
             @Override
             public void run() {
                 LOGGER.info("Another thread running");
-                System.out.println("Another thread finish");
             }
         });
 
-        System.out.println("....");
-    }
-
-    private class Task implements Runnable {
-
-        @Override
-        public void run() {
-
-        }
-
-
+        System.out.println("From third service, response: " + OkHttpUtil.doGet("http://localhost:8082/test"));
     }
 }
