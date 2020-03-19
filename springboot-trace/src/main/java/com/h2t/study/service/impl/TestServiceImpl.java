@@ -3,6 +3,7 @@ package com.h2t.study.service.impl;
 import com.h2t.study.service.TestService;
 import com.h2t.study.util.HttpClientUtil;
 import com.h2t.study.util.OkHttpUtil;
+import com.h2t.study.util.RestTemplateUtil;
 import com.h2t.study.wrapper.ThreadPoolExecutorMdcWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,5 +37,6 @@ public class TestServiceImpl implements TestService {
 
         OkHttpUtil.doGet("http://localhost:8082/test");
         HttpClientUtil.doGet("http://localhost:8082/test");
+        RestTemplateUtil.doGet("http://localhost:8082/test");
     }
 }
