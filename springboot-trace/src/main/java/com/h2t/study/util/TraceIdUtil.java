@@ -1,5 +1,7 @@
 package com.h2t.study.util;
 
+import java.util.UUID;
+
 /**
  * traceId生成工具类
  *
@@ -9,6 +11,6 @@ package com.h2t.study.util;
  */
 public class TraceIdUtil {
     public static String getTraceId() {
-        return java.util.UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
+        return UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
     }
 }

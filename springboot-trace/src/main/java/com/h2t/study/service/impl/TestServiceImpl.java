@@ -1,6 +1,7 @@
 package com.h2t.study.service.impl;
 
 import com.h2t.study.service.TestService;
+import com.h2t.study.util.HttpClientUtil;
 import com.h2t.study.util.OkHttpUtil;
 import com.h2t.study.wrapper.ThreadPoolExecutorMdcWrapper;
 import org.slf4j.Logger;
@@ -33,6 +34,7 @@ public class TestServiceImpl implements TestService {
             }
         });
 
-        System.out.println("From third service, response: " + OkHttpUtil.doGet("http://localhost:8082/test"));
+        OkHttpUtil.doGet("http://localhost:8082/test");
+        HttpClientUtil.doGet("http://localhost:8082/test");
     }
 }

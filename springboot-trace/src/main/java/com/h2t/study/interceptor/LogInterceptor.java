@@ -25,7 +25,7 @@ public class LogInterceptor implements HandlerInterceptor {
             traceId = UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
         }
 
-        MDC.put("traceId", traceId);
+        MDC.put(Constants.TRACE_ID, traceId);
         return true;
     }
 

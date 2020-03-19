@@ -1,5 +1,6 @@
 package com.h2t.study.util;
 
+import com.h2t.study.constant.Constants;
 import org.slf4j.MDC;
 
 import java.util.Map;
@@ -13,11 +14,9 @@ import java.util.concurrent.Callable;
  * @Date 2020/03/18 15:18
  */
 public class ThreadMdcUtil {
-    private final static String TRACE_ID = "traceId";
-
     public static void setTraceIdIfAbsent() {
-        if (MDC.get(TRACE_ID) == null) {
-            MDC.put(TRACE_ID, TraceIdUtil.getTraceId());
+        if (MDC.get(Constants.TRACE_ID) == null) {
+            MDC.put(Constants.TRACE_ID, TraceIdUtil.getTraceId());
         }
     }
 

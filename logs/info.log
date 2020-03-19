@@ -15,3 +15,14 @@
 [TRACEID:8EB34871B81C4CD5AE47882DA0719F0C] 15:32:32.733 INFO  h2t.study.service.impl.TestServiceImpl$1.run()/32 - Another thread running
 [TRACEID:476420F748964C35924D3E7F3F8D0F7C] 15:37:56.677 INFO  h2t.study.controller.TestController.test()/29 - TestController /test invoke
 [TRACEID:476420F748964C35924D3E7F3F8D0F7C] 15:37:56.679 INFO  h2t.study.service.impl.TestServiceImpl$1.run()/32 - Another thread running
+[TRACEID:] 15:54:50.410 INFO  springframework.boot.StartupInfoLogger.logStarting()/55 - Starting SpringbootTraceApplication on spc-hz20121817 with PID 102052 (started by hetiantian in G:\java工程\springboot-log)
+[TRACEID:] 15:54:50.424 INFO  springframework.boot.SpringApplication.logStartupProfileInfo()/651 - No active profile set, falling back to default profiles: default
+[TRACEID:] 15:54:52.602 INFO  apache.juli.logging.DirectJDKLog.log()/173 - Initializing ProtocolHandler ["http-nio-8083"]
+[TRACEID:] 15:54:52.603 INFO  apache.juli.logging.DirectJDKLog.log()/173 - Starting service [Tomcat]
+[TRACEID:] 15:54:52.603 INFO  apache.juli.logging.DirectJDKLog.log()/173 - Starting Servlet engine: [Apache Tomcat/9.0.31]
+[TRACEID:] 15:54:53.644 INFO  apache.juli.logging.DirectJDKLog.log()/173 - Initializing Spring embedded WebApplicationContext
+[TRACEID:] 15:54:53.986 INFO  apache.juli.logging.DirectJDKLog.log()/173 - Starting ProtocolHandler ["http-nio-8083"]
+[TRACEID:] 15:54:54.051 INFO  springframework.boot.StartupInfoLogger.logStarted()/61 - Started SpringbootTraceApplication in 4.338 seconds (JVM running for 6.305)
+[TRACEID:] 15:55:09.798 INFO  apache.juli.logging.DirectJDKLog.log()/173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[TRACEID:3A06EB5892434E95AB632B8304171F76] 15:55:09.886 INFO  h2t.study.controller.TestController.test()/29 - TestController /test invoke
+[TRACEID:3A06EB5892434E95AB632B8304171F76] 15:55:09.890 INFO  h2t.study.service.impl.TestServiceImpl$1.run()/33 - Another thread running
