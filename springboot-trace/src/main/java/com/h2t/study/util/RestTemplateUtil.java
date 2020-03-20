@@ -2,7 +2,6 @@ package com.h2t.study.util;
 
 import com.alibaba.fastjson.JSONObject;
 import com.h2t.study.interceptor.RestTemplateTraceIdInterceptor;
-import okhttp3.Request;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
@@ -25,9 +24,6 @@ public class RestTemplateUtil {
      */
     public static String doGet(String url) {
         restTemplate.setInterceptors(Arrays.asList(new RestTemplateTraceIdInterceptor()));
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
         return JSONObject.toJSONString(restTemplate.getForObject(url, String.class));
     }
 }
