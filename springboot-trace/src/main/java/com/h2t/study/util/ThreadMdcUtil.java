@@ -37,17 +37,20 @@ public class ThreadMdcUtil {
     }
 
     public static Runnable wrap(final Runnable runnable, final Map<String, String> context) {
-        return () -> {
-            if (context == null) {
-                MDC.clear();
-            } else {
-                MDC.setContextMap(context);
-            }
-            setTraceIdIfAbsent();
-            try {
-                runnable.run();
-            } finally {
-                MDC.clear();
+        return new Runnable() {
+            @Override
+            public void run() {
+                if (context == null) {
+                    MDC.clear();
+                } else {
+                    MDC.setContextMap(context);
+                }
+                setTraceIdIfAbsent();
+                try {
+                    runnable.run();
+                } finally {
+                    MDC.clear();
+                }
             }
         };
     }
