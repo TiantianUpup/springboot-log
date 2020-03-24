@@ -173,3 +173,5 @@ public class RestTemplateTraceIdInterceptor implements ClientHttpRequestIntercep
 }
 ```
 在使用时对应HTTP链接工具添加对应的拦截器即可
+
+附相关文章：[MDC+拦截器操作traceId实现全链路调用日志跟踪](https://juejin.im/post/5e79bce5e51d4527235b8878)
