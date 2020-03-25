@@ -1,6 +1,18 @@
 # springboot-trace介绍
 log4j2结合MDC打印traceId，包括调用第三方服务接口打印traceId、子线程打印traceId
 
+### DONE
+- [x] 线程池traceId跟踪
+- [x] HTTP调用第三方服务接口traceId跟踪
+  - [x] HttpClient 
+  - [x] OKHttp
+  - [x] RestTemplate
+  
+### TODO
+- [ ] 消息中间件如MQ traceId跟踪
+- [ ] 定时任务 traceId跟踪
+- [ ] RPC 如dubbo traceId跟踪
+
 ### traceId配置
 **拦截器：**  
 ```
