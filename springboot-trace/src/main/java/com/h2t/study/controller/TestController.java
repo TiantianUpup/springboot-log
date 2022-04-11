@@ -1,5 +1,6 @@
 package com.h2t.study.controller;
 
+import com.h2t.study.annotation.TraceLog;
 import com.h2t.study.service.TestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,8 +26,10 @@ public class TestController {
     private TestService testService;
 
     @GetMapping
-    public Object test() {
+    @TraceLog(type = "controller")
+    public Object test() throws InterruptedException {
         LOGGER.info("TestController /test invoke");
+        Thread.sleep(6000);
         testService.test();
         return "hello";
     }

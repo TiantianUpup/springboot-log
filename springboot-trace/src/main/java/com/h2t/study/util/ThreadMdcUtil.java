@@ -30,8 +30,9 @@ public class ThreadMdcUtil {
             setTraceIdIfAbsent();
             try {
                 return callable.call();
-            } finally {
+            } catch (Exception e) {
                 MDC.clear();
+                throw new RuntimeException(e);
             }
         };
     }
@@ -48,8 +49,9 @@ public class ThreadMdcUtil {
                 setTraceIdIfAbsent();
                 try {
                     runnable.run();
-                } finally {
+                } catch (Exception e) {
                     MDC.clear();
+                    throw new RuntimeException(e);
                 }
             }
         };

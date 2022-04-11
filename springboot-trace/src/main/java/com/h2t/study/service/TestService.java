@@ -8,5 +8,5 @@ package com.h2t.study.service;
  * @Date 2020/03/13 16:15
  */
 public interface TestService {
-    void test();
+    void test() throws InterruptedException;
 }

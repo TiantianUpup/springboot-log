@@ -1,9 +1,7 @@
 package com.h2t.study.service.impl;
 
+import com.h2t.study.annotation.TraceLog;
 import com.h2t.study.service.TestService;
-import com.h2t.study.util.HttpClientUtil;
-import com.h2t.study.util.OkHttpUtil;
-import com.h2t.study.util.RestTemplateUtil;
 import com.h2t.study.wrapper.ThreadPoolExecutorMdcWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,19 +22,38 @@ public class TestServiceImpl implements TestService {
     private Logger LOGGER = LoggerFactory.getLogger(TestServiceImpl.class);
 
     @Override
-    public void test() {
+    @TraceLog(level = "warn",type = "service")
+    public void test() throws InterruptedException {
         ThreadPoolExecutorMdcWrapper threadPoolExecutorMdcWrapper = new ThreadPoolExecutorMdcWrapper(0, Integer.MAX_VALUE,
                 60L, TimeUnit.SECONDS,
                 new SynchronousQueue<>());
+        Thread.sleep(2000);
         threadPoolExecutorMdcWrapper.execute(new Runnable() {
             @Override
             public void run() {
-                LOGGER.info("Another thread running");
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                LOGGER.info("Another thread1 running");
             }
         });
 
-        OkHttpUtil.doGet("http://localhost:8082/test");
-        HttpClientUtil.doGet("http://localhost:8082/test");
-        RestTemplateUtil.doGet("http://localhost:8082/test");
+        threadPoolExecutorMdcWrapper.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                LOGGER.info("Another thread2 running");
+            }
+        });
+
+//        OkHttpUtil.doGet("http://localhost:8082/test");
+//        HttpClientUtil.doGet("http://localhost:8082/test");
+//        RestTemplateUtil.doGet("http://localhost:8082/test");
     }
 }
