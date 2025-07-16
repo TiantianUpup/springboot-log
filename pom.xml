@@ -30,7 +30,7 @@
             <!--<dependency>-->
                 <!--<groupId>org.springframework.boot</groupId>-->
                 <!--<artifactId>spring-boot-starter-test</artifactId>-->
-                <!--<version>2.0.4.RELEASE</version>-->
+                <!--<version>2.3.10.RELEASE</version>-->
                 <!--<scope>test</scope>-->
             <!--</dependency>-->
 
@@ -38,14 +38,14 @@
             <!--<dependency>-->
                 <!--<groupId>mysql</groupId>-->
                 <!--<artifactId>mysql-connector-java</artifactId>-->
-                <!--<version>6.0.6</version>-->
+                <!--<version>8.0.31</version>-->
             <!--</dependency>-->
 
             <!--&lt;!&ndash;mybatisplus&ndash;&gt;-->
             <!--<dependency>-->
                 <!--<groupId>com.baomidou</groupId>-->
                 <!--<artifactId>mybatis-plus-boot-starter</artifactId>-->
-                <!--<version>3.1.2</version>-->
+                <!--<version>3.5.8</version>-->
             <!--</dependency>-->
         </dependencies>
     </dependencyManagement>
